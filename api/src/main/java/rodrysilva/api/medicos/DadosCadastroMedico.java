@@ -6,7 +6,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import rodrysilva.api.endereco.DadosEndereco;
-import rodrysilva.api.endereco.Endereco;
 
 public record DadosCadastroMedico(
         @NotBlank
@@ -16,6 +15,11 @@ public record DadosCadastroMedico(
         @Email
         String email,
 
+        @NotBlank
+        @Pattern(regexp = "\\d{8,9}")
+        String telefone,
+
+
         @NotNull
         @Pattern(regexp = "\\d{4,6}")
         String crm,
@@ -24,7 +28,9 @@ public record DadosCadastroMedico(
         Especialidade especialidade,
 
         @NotNull @Valid
-        Endereco endereco) {
+        DadosEndereco endereco)
+
+        {
 
 
 
